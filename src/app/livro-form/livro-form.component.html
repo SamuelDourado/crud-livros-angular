@@ -1,0 +1,42 @@
+<h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-white ">Detalhamento de Livro</h5>
+<form [formGroup]="livroForm" class="w-full" (ngSubmit)="onSubmit()" novalidate>
+  <div class="mb-5">
+    <label for="titulo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Título</label>
+    <input type="text" id="titulo" class="form-control" placeholder="Título" formControlName="titulo">
+    @if (livroForm.get('titulo')?.hasError('required') && livroForm.get('titulo')?.touched) {
+    <div class="form-error">O campo Título é obrigatório</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="codL" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Código Livro</label>
+    <input type="text" id="codL" class="form-control" placeholder="Código Livro" formControlName="codL">
+    @if (livroForm.get('codL')?.hasError('required') && livroForm.get('codL')?.touched) {
+    <div class="form-error">O campo Código Livro é obrigatório</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="editora" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Editora</label>
+    <input type="text" id="editora" class="form-control" placeholder="Editora" formControlName="editora">
+    @if (livroForm.get('editora')?.hasError('required') && livroForm.get('editora')?.touched) {
+    <div class="form-error">O campo Editora é obrigatório</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="edicao" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Edição</label>
+    <input type="text" id="edicao" class="form-control" placeholder="Edição" formControlName="edicao">
+    @if (livroForm.get('edicao')?.hasError('required') && livroForm.get('edicao')?.touched) {
+    <div class="form-error">O campo Edição é obrigatório</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="anoPublicacao" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ano de Publicação</label>
+    <input type="number" id="anoPublicacao" class="form-control" placeholder="Ano de Publicação" formControlName="anoPublicacao">
+    @if (livroForm.get('anoPublicacao')?.hasError('required') && livroForm.get('anoPublicacao')?.touched) {
+    <div class="form-error">O campo Ano de Publicação é obrigatório</div>
+    }
+  </div>
+  <button type="submit"
+    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Enviar</button>
+  <button type="button" (click)="onClose()"
+    class="text-white  ms-2 bg-gray-700 hover:bg-gray-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Cancelar</button>
+</form>

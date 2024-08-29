@@ -1,0 +1,61 @@
+<div class="flex justify-between items-center mb-6">
+  <h4 class="font-bold text-2xl"></h4>
+  <a type="button" href="http://127.0.0.1/api/relatorio" 
+    class="text-white bg-green-700 hover:bg-blue-800 focus:outline-none font-medium rounded-full px-6 py-3 text-center mb-2 ">
+    Download relatório
+  </a>
+  <button type="button" (click)="openModel()"
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-full px-6 py-3 text-center mb-2 ">
+    Adicionar Livro
+  </button>
+</div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <caption
+      class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+      Livros
+    </caption>
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          Código
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Título
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Editora
+        </th>
+        <th scope="col" class="px-6 py-3">
+          <span class="sr-only">Edit</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of livros; track $index) {
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          {{item.codL}}
+        </th>
+        <td class="px-6 py-4">
+          {{item.titulo}}
+        </td>
+        <td class="px-6 py-4">
+          {{item.editora}}
+        </td>
+        <td class="px-6 py-4 text-right">
+          <button type="button" (click)="item.id && loadLivro(item)"
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-4">Editar</button>
+          <button type="button" (click)="item.id && deleteLivro(item.id)"
+            class="font-medium text-red-600 dark:text-red-500 hover:underline">Excluir</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<app-model [isOpen]="isModelOpen" (closeModel)="closeModel()">
+  <app-livro-form (onCloseModel)="closeModel()" [data]="livro"></app-livro-form>
+</app-model>
+
